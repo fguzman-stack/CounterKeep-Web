@@ -1,0 +1,53 @@
+---
+import { content, type Language } from '../data/content';
+import '../styles/global.css';
+const { language = 'en', title, description, page = '' } = Astro.props as { language?: Language; title?: string; description?: string; page?: string };
+const c = content[language];
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const home = `${base}/${language === 'es' ? 'es/' : ''}`;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+const asset = (name: string) => `${base}/images/${name}`;
+const english = `${base}/${page ? `${page}/` : ''}`;
+const spanish = `${base}/es/${page ? `${page}/` : ''}`;
+const schema = !page ? {
+  '@context': 'https://schema.org', '@type': 'SoftwareApplication',
+  name: 'CounterKeep', applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Windows 10, Windows 11 (64-bit)',
+  description: c.description, inLanguage: ['en', 'es', 'pt', 'fr', 'de'],
+  ...(canonical ? { url: canonical } : {}),
+} : null;
+---
+<!doctype html>
+<html lang={language}>
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f8f7f3" />
+    <title>{title || c.title}</title><meta name="description" content={description || c.description} />
+    <link rel="icon" type="image/jpeg" href={asset('logo.jpg')} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    {Astro.site && <><link rel="alternate" hreflang="en" href={new URL(english, Astro.site).href} /><link rel="alternate" hreflang="es" href={new URL(spanish, Astro.site).href} /><link rel="alternate" hreflang="x-default" href={new URL(english, Astro.site).href} /></>}
+    <meta property="og:type" content="website" /><meta property="og:title" content={title || c.title} />
+    <meta property="og:description" content={description || c.description} /><meta property="og:locale" content={language === 'es' ? 'es_LA' : 'en_US'} />
+    <meta property="og:image" content={Astro.site ? new URL(asset(`hero-${language}.png`), Astro.site).href : asset(`hero-${language}.png`)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {canonical && <meta property="og:url" content={canonical} />}
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\\u003c')} />}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{language === 'es' ? 'Saltar al contenido' : 'Skip to content'}</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href={home} class="brand" aria-label="CounterKeep"><img src={asset('logo.jpg')} width="36" height="36" alt="" /><span>CounterKeep<span class="brand-dot">.</span></span></a>
+        <nav aria-label={language === 'es' ? 'Navegación principal' : 'Main navigation'}>
+          {c.nav.map((label, i) => <a href={`${home}#${['product', 'screenshots', 'workflow', 'faq'][i]}`}>{label}</a>)}
+        </nav>
+        <div class="header-actions"><a class="language-switch" href={language === 'es' ? english : spanish} lang={language === 'es' ? 'en' : 'es'}>{c.switchLabel}</a><a class="button button-small button-dark desktop-cta" href={`${home}#product`}>{c.navCta}<span aria-hidden="true">↗</span></a></div>
+      </div>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer container">
+      <div class="footer-top"><div><a class="brand" href={home}><img src={asset('logo.jpg')} width="32" height="32" alt="" /><span>CounterKeep<span class="brand-dot">.</span></span></a><p>{c.footerDescription}</p></div><nav aria-label={language === 'es' ? 'Información' : 'Information'}>{c.footerLinks.map((label, i) => <a href={`${home}${['help', 'privacy', 'terms'][i]}/`}>{label}</a>)}</nav></div>
+      <div class="footer-bottom"><span>© {new Date().getFullYear()} CounterKeep</span><span>{c.footerNote}</span></div>
+    </footer>
+  </body>
+</html>

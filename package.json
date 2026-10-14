@@ -1,0 +1,19 @@
+{
+  "name": "counterkeep-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1 --port 4321",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1 --port 4321",
+    "capture": "node scripts/capture-product.mjs",
+    "test": "node scripts/test-site.mjs"
+  },
+  "dependencies": {
+    "astro": "^7.3.8"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0"
+  }
+}

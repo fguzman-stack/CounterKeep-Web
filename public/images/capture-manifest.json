@@ -1,0 +1,82 @@
+[
+  {
+    "file": "hero-en.png",
+    "view": "dashboard",
+    "language": "en-US",
+    "width": 1920,
+    "height": 1080,
+    "source": "Actual CounterKeep React interface in browser preview; isolated fictional demo fixtures; no UI reconstruction"
+  },
+  {
+    "file": "feature-1-pos-en.png",
+    "view": "newSale",
+    "language": "en-US",
+    "width": 1920,
+    "height": 1080,
+    "source": "Actual CounterKeep React interface in browser preview; isolated fictional demo fixtures; no UI reconstruction"
+  },
+  {
+    "file": "feature-2-inventory-en.png",
+    "view": "products",
+    "language": "en-US",
+    "width": 1920,
+    "height": 1080,
+    "source": "Actual CounterKeep React interface in browser preview; isolated fictional demo fixtures; no UI reconstruction"
+  },
+  {
+    "file": "feature-3-reports-en.png",
+    "view": "reports",
+    "language": "en-US",
+    "width": 1920,
+    "height": 1080,
+    "source": "Actual CounterKeep React interface in browser preview; isolated fictional demo fixtures; no UI reconstruction"
+  },
+  {
+    "file": "feature-4-work-orders-en.png",
+    "view": "workOrders",
+    "language": "en-US",
+    "width": 1920,
+    "height": 1080,
+    "source": "Actual CounterKeep React interface in browser preview; isolated fictional demo fixtures; no UI reconstruction"
+  },
+  {
+    "file": "hero-es.png",
+    "view": "dashboard",
+    "language": "es-419",
+    "width": 1920,
+    "height": 1080,
+    "source": "Actual CounterKeep React interface in browser preview; isolated fictional demo fixtures; no UI reconstruction"
+  },
+  {
+    "file": "feature-1-pos-es.png",
+    "view": "newSale",
+    "language": "es-419",
+    "width": 1920,
+    "height": 1080,
+    "source": "Actual CounterKeep React interface in browser preview; isolated fictional demo fixtures; no UI reconstruction"
+  },
+  {
+    "file": "feature-2-inventory-es.png",
+    "view": "products",
+    "language": "es-419",
+    "width": 1920,
+    "height": 1080,
+    "source": "Actual CounterKeep React interface in browser preview; isolated fictional demo fixtures; no UI reconstruction"
+  },
+  {
+    "file": "feature-3-reports-es.png",
+    "view": "reports",
+    "language": "es-419",
+    "width": 1920,
+    "height": 1080,
+    "source": "Actual CounterKeep React interface in browser preview; isolated fictional demo fixtures; no UI reconstruction"
+  },
+  {
+    "file": "feature-4-work-orders-es.png",
+    "view": "workOrders",
+    "language": "es-419",
+    "width": 1920,
+    "height": 1080,
+    "source": "Actual CounterKeep React interface in browser preview; isolated fictional demo fixtures; no UI reconstruction"
+  }
+]

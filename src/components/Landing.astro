@@ -1,0 +1,56 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from './Icon.astro';
+import { content, type Language } from '../data/content';
+const { language = 'en' } = Astro.props as { language?: Language };
+const c = content[language];
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const image = (name: string) => `${base}/images/${name}-${language}.png`;
+const shots = ['hero', ...c.features.map(f => f.shot)];
+---
+<Base language={language}>
+  <section class="hero container">
+    <div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span>{c.eyebrow}</p><h1>{c.headline[0]}<br /><span>{c.headline[1]}</span></h1><p class="hero-intro">{c.intro}</p><div class="hero-actions"><a class="button button-orange" href="#screenshots">{c.cta}<Icon name="arrow" size={19} /></a><a class="text-link" href="#product">{c.secondary}<span aria-hidden="true">↗</span></a></div><ul class="hero-badges">{c.badges.map(b => <li><Icon name="check" size={15} />{b}</li>)}</ul></div>
+    <div class="hero-note" aria-hidden="true"><span class="note-symbol">↙</span><span>{c.screenLabel}</span></div>
+    <figure class="hero-screen"><button class="screen-open" data-screenshot={image('hero')} data-caption={c.tabs[0]} aria-label={`${c.enlarge}: ${c.tabs[0]}`}><img src={image('hero')} width="1920" height="1080" alt={language === 'es' ? 'Panel de ventas de CounterKeep' : 'CounterKeep daily sales dashboard'} fetchpriority="high" /><span class="expand-badge"><Icon name="expand" size={18} /></span></button><figcaption><span class="tiny-dot"></span>{c.screenNote}<span class="screen-counter">01 / 05</span></figcaption></figure>
+  </section>
+  <div class="feature-strip"><div class="container">{c.strip.map((s, i) => <span><Icon name={['cart', 'box', 'chart', 'tool'][i]} size={20} />{s}</span>)}</div></div>
+  <section class="section container" id="product"><div class="section-heading"><div><p class="eyebrow">{c.productEyebrow}</p><h2 class="preserve-lines">{c.productTitle}</h2></div><p>{c.productIntro}</p></div><div class="feature-grid">{c.features.map((f, i) => <article class="feature-card"><div class="card-top"><span class="icon-box"><Icon name={f.icon} /></span><span class="card-number">0{i + 1}</span></div><h3>{f.title}</h3><p>{f.body}</p><a href="#screenshots" class="feature-link" data-select-shot={i + 1}>{f.detail}<Icon name="arrow" size={18} /></a></article>)}</div></section>
+  <section class="gallery-section" id="screenshots"><div class="container"><div class="section-heading"><div><p class="eyebrow">{c.galleryEyebrow}</p><h2>{c.galleryTitle}</h2></div><p>{c.galleryIntro}</p></div><div class="gallery-tabs" role="tablist" aria-label={c.galleryTitle}>{c.tabs.map((label, i) => <button id={`tab-${i}`} role="tab" aria-selected={i === 0 ? 'true' : 'false'} aria-controls={`panel-${i}`} tabindex={i === 0 ? 0 : -1} data-tab={i}>{label}</button>)}</div><div class="gallery-frame">{shots.map((shot, i) => <div id={`panel-${i}`} role="tabpanel" aria-labelledby={`tab-${i}`} hidden={i !== 0}><button class="screen-open" data-screenshot={image(shot)} data-caption={c.tabs[i]} aria-label={`${c.enlarge}: ${c.tabs[i]}`}><img src={image(shot)} width="1920" height="1080" loading="lazy" alt={`${c.tabs[i]} · CounterKeep`} /><span class="expand-badge"><Icon name="expand" size={20} /></span></button></div>)}</div><p class="gallery-caption"><span>{c.screenNote}</span><span>1920 × 1080</span></p></div></section>
+  <section class="section container workflow" id="workflow"><div class="workflow-heading"><p class="eyebrow">{c.workflowEyebrow}</p><h2 class="preserve-lines">{c.workflowTitle}</h2><p class="requirements">{c.requirements}</p><a class="text-link" href={`${base}/${language === 'es' ? 'es/' : ''}help/`}>{c.footerLinks[0]}<Icon name="arrow" size={19} /></a></div><ol class="steps">{c.steps.map(([title, body], i) => <li><span class="step-number">0{i + 1}</span><div><h3>{title}</h3><p>{body}</p></div></li>)}</ol></section>
+  <section class="container local-grid"><article class="local-card"><Icon name="lock" size={30} /><h3>{c.localTitle}</h3><p>{c.localBody}</p><small>{c.localFootnote}</small><span class="local-tag">SQLite · Offline</span></article><article class="language-card"><Icon name="globe" size={30} /><h3>{c.languageTitle}</h3><p>{c.languageBody}</p><div class="language-chips">{['English', 'Español', 'Português', 'Français', 'Deutsch'].map(l => <span>{l}</span>)}</div></article></section>
+  <section class="section container faq-section" id="faq"><div><p class="eyebrow">{c.faqEyebrow}</p><h2>{c.faqTitle}</h2></div><div class="faq-list">{c.faqs.map(([q, a]) => <details><summary>{q}<span class="faq-plus" aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div></section>
+  <section class="container closing"><div><p class="eyebrow">{c.bottomEyebrow}</p><h2 class="preserve-lines">{c.bottomTitle}</h2><p>{c.bottomBody}</p><a class="button button-orange" href="#screenshots">{c.bottomCta}<Icon name="arrow" size={20} /></a></div><div class="closing-art" aria-hidden="true"><div class="receipt"><span>CounterKeep.</span><div class="receipt-line"></div><div class="receipt-line short"></div><div class="receipt-line"></div><div class="receipt-divider"></div><div class="receipt-check"><Icon name="check" size={40} /></div><small>LOCAL · OFFLINE · WINDOWS</small></div><span class="art-spark spark-one">✳</span><span class="art-spark spark-two">+</span></div></section>
+  <dialog class="screenshot-dialog" aria-label={c.enlarge}><div class="dialog-toolbar"><p id="dialog-caption"></p><button class="dialog-close" aria-label={c.close}>{c.close}<span aria-hidden="true">×</span></button></div><img id="dialog-image" alt="" width="1920" height="1080" /></dialog>
+</Base>
+<script>
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>('[data-tab]')];
+  function selectTab(index: number, focus = false) {
+    tabs.forEach((tab, i) => { tab.setAttribute('aria-selected', String(i === index)); tab.tabIndex = i === index ? 0 : -1; const panel = document.getElementById(`panel-${i}`); if (panel) panel.hidden = i !== index; });
+    if (focus) tabs[index]?.focus();
+  }
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => selectTab(index));
+    tab.addEventListener('keydown', event => {
+      let next = index;
+      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+      else if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+      else if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = tabs.length - 1;
+      else return;
+      event.preventDefault(); selectTab(next, true);
+    });
+  });
+  document.querySelectorAll<HTMLElement>('[data-select-shot]').forEach(link => link.addEventListener('click', () => selectTab(Number(link.dataset.selectShot))));
+  const dialog = document.querySelector<HTMLDialogElement>('.screenshot-dialog');
+  const img = document.querySelector<HTMLImageElement>('#dialog-image');
+  const caption = document.querySelector('#dialog-caption');
+  document.querySelectorAll<HTMLElement>('[data-screenshot]').forEach(button => button.addEventListener('click', () => {
+    if (!dialog || !img || !caption) return;
+    img.src = button.dataset.screenshot!; img.alt = `${button.dataset.caption} · CounterKeep`; caption.textContent = button.dataset.caption!;
+    dialog.showModal(); document.body.classList.add('modal-open');
+  }));
+  document.querySelector('.dialog-close')?.addEventListener('click', () => dialog?.close());
+  dialog?.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+  dialog?.addEventListener('close', () => document.body.classList.remove('modal-open'));
+</script>

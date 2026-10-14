@@ -1,0 +1,15 @@
+{
+  "source": "Actual CounterKeep React UI, browser preview, fictional demo fixtures in isolated Playwright context",
+  "logo": { "image_type": "logo", "file": "public/images/logo.jpg" },
+  "hero": { "image_type": "main_image", "file": "public/images/hero-en.png", "alt_text": "CounterKeep daily sales dashboard" },
+  "gallery": [
+    { "image_type": "image", "order": 0, "file": "public/images/feature-1-pos-en.png", "alt_text": "CounterKeep checkout and cart" },
+    { "image_type": "image", "order": 1, "file": "public/images/feature-2-inventory-en.png", "alt_text": "CounterKeep product stock list" },
+    { "image_type": "image", "order": 2, "file": "public/images/feature-3-reports-en.png", "alt_text": "CounterKeep daily sales report" },
+    { "image_type": "image", "order": 3, "file": "public/images/feature-4-work-orders-en.png", "alt_text": "CounterKeep repair work orders" }
+  ],
+  "screenshots": { "width": 1920, "height": 1080, "format": "png", "max_bytes": 5242880 },
+  "spanish_versions": "Replace -en.png with -es.png",
+  "submission_id": null,
+  "uploaded": false
+}
