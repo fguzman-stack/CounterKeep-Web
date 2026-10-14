@@ -1,0 +1,26 @@
+{
+  "submission_id": 232349,
+  "deal_id": 264177,
+  "workspace_id": 119950,
+  "status": "draft",
+  "submitted_for_review": false,
+  "website": "https://fguzman-stack.github.io/CounterKeep-Web/",
+  "repository": "https://github.com/fguzman-stack/CounterKeep-Web",
+  "editor": "https://partners.appsumo.com/self-submission/232349/build?from=agent",
+  "preview": "https://appsumo.com/products/preview-counterkeep/?p=1",
+  "importer": { "workflow_status": "rejected_pre_qual", "ux_state": "hard_rejected", "reason_returned": false, "manual_edit_succeeded": true },
+  "confirmed_offer": {
+    "currency": "USD", "price": 49, "payment": "one_time", "devices": 1,
+    "scope": "Lifetime access to the plan features and future updates to those features; separate future editions are not promised",
+    "support_email": "familiazv2016@gmail.com"
+  },
+  "pricing_model": "codes",
+  "founder_confirmed": true,
+  "uploaded_images": 6,
+  "feature_stories": 4,
+  "faqs": 8,
+  "codes": { "uploaded": false, "required_min": 1000, "required_max": 10000 },
+  "redemption_url": null,
+  "blockers": ["Functional redemption and license validation", "Valid redemption codes CSV", "Verified official Windows installer and distribution", "Founder review of the draft before submission"],
+  "preview_notes": "Image gallery, feature stories and founder content rendered. Pricing and FAQ template components returned empty placeholders despite fields persisting in the draft; review the signed-in editor and preview before submission."
+}

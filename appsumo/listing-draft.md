@@ -1,6 +1,6 @@
 ## Basic information
 Product name: CounterKeep
-Category: Finance & Accounting (finance-accounting), Operations group (operations). Proposed closest catalog option, confirm before applying; do not present CounterKeep as a full accounting suite
+Category: Finance & Accounting (finance-accounting), Operations group (operations), selected from the verified catalog; CounterKeep is not a full accounting suite
 Tagline: Offline POS and inventory for Windows shops
 Unique selling proposition: Keep your shop running offline
 Intro sentence: Internet outages should not stop your counter. CounterKeep puts sales, stock and daily reports in a Windows desktop app with a local database
@@ -45,35 +45,40 @@ Screenshot to pair: public/images/feature-3-reports-en.png
 Screenshot to pair: public/images/feature-4-work-orders-en.png
 
 ## Pricing
-Pricing model: PENDING founder decision. Codes is a possible fit for a single desktop tier, only after real redemption is implemented
-Tier 1 name: PENDING
-Price: PENDING. Recommendation for consideration only: entry deal at $49 or less, not a requirement and not an approved price
-Original price: PENDING. Omit unless supported by a real regular price; do not invent a crossed-out comparison
-Feature matrix, included in all plans if approved by founder:
+Pricing model: Codes, one plan without stacking; real redemption is still pending
+Tier 1 name: 1 code
+Price: US$49, one-time, approved by the founder
+Original price: Omitted, no real regular price has been supplied
+License scope: Lifetime access to the plan features on one Windows device and future updates to those features; separate future editions are not promised
+Feature matrix:
 - Windows desktop app: Included
 - Local sales and inventory: Included
 - Customers and suppliers: Included
 - Daily sales reports: Included
 - Repair work order records: Included
 - CSV/XLSX product exports: Included
-- Device or business limit: PENDING license terms and enforcement
+- Windows devices: 1
+- Updates to included features: Included
 Tooltips: Payment recording does not include card processing
 Redemption: PENDING implementation and end-to-end verification
-Support email: PENDING real support address
+Support email: familiazv2016@gmail.com, confirmed by the founder
 Redemption instructions: PENDING verified download, code/license activation and support steps
-Codes: PENDING public HTTPS redemption URL and a CSV of codes accepted by the actual system; never generate a list of nonfunctional random keys just to satisfy the upload step
+Codes: PENDING public HTTPS redemption URL and a CSV of 1,000 to 10,000 codes accepted by the actual system, limits read from this draft; never generate a list of nonfunctional random keys just to satisfy the upload step
 Licensing: If selected instead of Codes, PENDING server-side webhook and OAuth redirect integration and successful AppSumo licensing tests
 
 ## Product story
 Headline: Why I built CounterKeep
-Founder narrative: PENDING two first-person paragraphs from the founder, explaining the real motivation, intended users and direction; no invented biography
-Name: PENDING
-Role: PENDING
-Founded: PENDING full date, YYYY-MM-DD
-Headquarters: PENDING real city or country, not Remote
-Team size: PENDING selection from 1-10, 11-50, 51-200, 201-500, 501+
-Stage: PENDING selection from Startup, Growth, Expansion, Established
-Funding: PENDING selection from Bootstrapped, Pre-Seed, Seed, Series A, Series B, Series C+, Public Company, Acquired
+Founder narrative:
+I built CounterKeep so small businesses can record sales, manage inventory and organize their day without depending on the internet or a cloud account. I wanted these everyday records to have a home on the shop’s own Windows computer.
+
+I am developing CounterKeep as a local-first desktop application. The current version brings together products, customers, suppliers, sales, purchases, daily reports and repair work orders. My focus is on practical shop operations, with clear limits: it records payment methods but does not process card transactions, and generated PDFs are not certified electronic tax invoices.
+Name: Francisco Guzmán
+Role: Founder and developer
+Founded: 2025-11-15
+Headquarters: Santiago, Chile
+Team size: 1-10
+Stage: Startup
+Funding: Bootstrapped
 
 ## FAQ
 Q: Does CounterKeep need the internet for daily use?
@@ -91,5 +96,7 @@ A: Product and contact lists support CSV/XLSX exports, documents and reports sup
 Q: Which interface languages are available?
 A: English, Spanish, Portuguese, French and German are available in the interface
 Q: What are the lifetime license and support terms?
-A: PENDING founder-approved lifetime scope, included future updates, device limits, support address and support response commitments
-Helpful links: PENDING real public help URL after hosting is chosen
+A: The proposed deal includes lifetime access to the plan’s features on one Windows device and future updates to those features; separate future editions are not promised, and support is available at familiazv2016@gmail.com
+Helpful links: Help: https://fguzman-stack.github.io/CounterKeep-Web/help/
+
+This local document records the prepared copy and remaining fulfillment decisions. The saved AppSumo draft is authoritative: https://partners.appsumo.com/self-submission/232349/build?from=agent

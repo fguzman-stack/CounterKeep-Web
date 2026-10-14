@@ -1,6 +1,10 @@
 # Preparación de lanzamiento
 
-La web y el material visual están preparados localmente. Esto no significa que el software esté aprobado para venderse ni que todos los requisitos de AppSumo estén completos. No se ha enviado CounterKeep a revisión.
+La web ya está publicada en https://fguzman-stack.github.io/CounterKeep-Web/. El borrador AppSumo `232349` contiene logo, hero, cuatro imágenes, cuatro stories, ocho FAQs, datos del fundador y un plan de US$49 para un equipo. Esto no significa que el software esté aprobado para venderse ni que todos los requisitos de AppSumo estén completos. No se ha enviado CounterKeep a revisión.
+
+Editor: https://partners.appsumo.com/self-submission/232349/build?from=agent (recargar si ya está abierto). Preview para el propietario conectado: https://appsumo.com/products/preview-counterkeep/?p=1.
+
+El importador automático respondió `rejected_pre_qual` / `hard_rejected`, sin motivo. La ficha AppSumo permanece `draft`, y las ediciones manuales por MCP se guardaron correctamente. No se creó un segundo borrador para reintentar la importación. La vista previa devuelve placeholders en las secciones de precio y FAQs aunque esos campos están guardados; revisar el editor conectado antes de enviar.
 
 ## Referencias oficiales consultadas
 
@@ -24,12 +28,13 @@ El brief pide una URL del producto, hero y galería fieles, stories emparejadas 
 
 ## Decisiones del fundador
 
-- [ ] Dominio o URL pública HTTPS y proveedor de alojamiento
-- [ ] Correo real de soporte y contacto legal/de privacidad
-- [ ] Identidad del fundador, historia real en primera persona, fecha de fundación, sede, tamaño, etapa y financiación
-- [ ] Modalidad Codes o Licensing; plan o planes y precio único
-- [ ] Alcance de acceso de por vida, actualizaciones, equipos, negocios y transferencias de licencia
-- [ ] Workspace correcto de AppSumo (no reutilizar automáticamente el workspace de DocuMind AI)
+- [x] URL pública HTTPS y GitHub Pages
+- [x] Correo público de soporte confirmado: familiazv2016@gmail.com
+- [x] Datos de la empresa y motivación del fundador confirmados por el usuario
+- [x] Borrador con modalidad Codes, un plan de US$49 y sin stacking
+- [x] Alcance aprobado: funciones del plan de por vida, un equipo y actualizaciones de esas funciones
+- [ ] Definir transferencias de equipo y condiciones finales de licencia
+- [x] Workspace 119950 elegido explícitamente por el usuario
 - [ ] Revisión y aprobación de capturas, copy y vista previa antes de enviar
 - [ ] Original horizontal de la marca si el tipo de listing lo exige
 
@@ -39,7 +44,7 @@ El brief pide una URL del producto, hero y galería fieles, stories emparejadas 
 - [ ] Definir distribución HTTPS, versión, firma del instalador y controles de integridad
 - [ ] Implementar y verificar el canje real con códigos o la integración Licensing
 - [ ] Verificar revocación/reembolso y su relación con una aplicación que funciona offline
-- [ ] Si Codes: leer min_codes/max_codes del ticket antes de generar o subir CSV; cada código debe existir en el sistema real
+- [ ] Si Codes: límites de este borrador 1.000–10.000 códigos; volver a verificar los del ticket antes de subir CSV, y cada código debe funcionar en el sistema real
 - [ ] Si Licensing: endpoints HTTPS, secreto solo en servidor, flujo OAuth y pruebas test_licensing
 - [ ] Probar que registros y ajustes sobreviven al reinicio de la app instalada
 - [ ] Asegurar una estrategia de respaldo y recuperación; actualmente hay exportación, pero la restauración completa consta como pendiente

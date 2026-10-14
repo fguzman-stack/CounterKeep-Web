@@ -54,6 +54,8 @@ Si se publica en una subruta (por ejemplo GitHub Pages), configurar además `BAS
 - `appsumo/launch-checklist.md`: requisitos y decisiones pendientes; enlaces oficiales
 - `appsumo/media.json`: slots, imágenes y textos alternativos
 
-No se ha creado ni enviado una ficha para CounterKeep en AppSumo. El MCP necesita una URL pública para iniciar la ficha. Antes de crearla hay que escoger el workspace; antes de enviarla hay que revisar el preview y obtener aprobación.
+El MCP creó y completó el borrador de CounterKeep, id `232349`, en el workspace elegido por el fundador. Editor: https://partners.appsumo.com/self-submission/232349/build?from=agent. No se ha enviado a revisión: faltan canje real, códigos válidos y distribución verificada del instalador. Antes de enviarla hay que revisar el preview y obtener aprobación.
+
+El fundador confirmó un plan de US$49 de pago único para un equipo Windows, acceso de por vida a las funciones del plan y sus actualizaciones, sin prometer ediciones futuras separadas. También confirmó `familiazv2016@gmail.com` como soporte público. El borrador usa la modalidad Codes, sin stacking, y aún no contiene códigos ni una URL de canje.
 
 La privacidad e información comercial de la web describen el estado actual, no sustituyen documentos legales aprobados. Sin testimonios inventados, estadísticas de adopción, precios, plazo de respuesta ni promesas de funciones pendientes.

@@ -10,6 +10,7 @@
   ],
   "screenshots": { "width": 1920, "height": 1080, "format": "png", "max_bytes": 5242880 },
   "spanish_versions": "Replace -en.png with -es.png",
-  "submission_id": null,
-  "uploaded": false
+  "submission_id": 232349,
+  "uploaded": true,
+  "uploaded_asset_ids": { "logo": 285544, "hero": 285545, "gallery": [285546, 285547, 285548, 285549] }
 }
