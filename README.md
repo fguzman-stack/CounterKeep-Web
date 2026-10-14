@@ -54,8 +54,18 @@ Si se publica en una subruta (por ejemplo GitHub Pages), configurar además `BAS
 - `appsumo/launch-checklist.md`: requisitos y decisiones pendientes; enlaces oficiales
 - `appsumo/media.json`: slots, imágenes y textos alternativos
 
-El MCP creó y completó el borrador de CounterKeep, id `232349`, en el workspace elegido por el fundador. Editor: https://partners.appsumo.com/self-submission/232349/build?from=agent. No se ha enviado a revisión: faltan canje real, códigos válidos y distribución verificada del instalador. Antes de enviarla hay que revisar el preview y obtener aprobación.
+El MCP creó y completó el borrador de CounterKeep, id `232349`, en el workspace elegido por el fundador. Editor: https://partners.appsumo.com/self-submission/232349/build?from=agent. No se ha enviado a revisión: el fundador debe revisar y aprobar el borrador. El canje, las licencias firmadas y el CSV de 1.000 códigos se prepararon y probaron; AppSumo aceptó el CSV. Antes de enviar, revisar el preview y las condiciones finales.
 
-El fundador confirmó un plan de US$49 de pago único para un equipo Windows, acceso de por vida a las funciones del plan y sus actualizaciones, sin prometer ediciones futuras separadas. También confirmó `familiazv2016@gmail.com` como soporte público. El borrador usa la modalidad Codes, sin stacking, y aún no contiene códigos ni una URL de canje.
+El fundador confirmó un plan de US$49 de pago único para un equipo Windows, acceso de por vida a las funciones del plan y sus actualizaciones, sin prometer ediciones futuras separadas. También confirmó `familiazv2016@gmail.com` como soporte público. El borrador usa la modalidad Codes, sin stacking.
+
+## Canje y distribución 0.2.0
+
+Página de canje: `/activate-ck-8f42b19e/`, con versión española bajo `/es/`. No aparece en menús ni sitemap y usa `noindex`. Esto no la hace privada: el código se valida en Supabase, nunca en una lista pública del navegador.
+
+El proyecto Supabase compartido con DocuMind fue elegido por el usuario; las tablas y funciones de CounterKeep están aisladas. Ver `supabase/README.md` para límites de confianza, revocación offline, administración y respaldo.
+
+Los archivos de instalación se distribuyen como assets de `desktop-v0.2.0` en GitHub Releases, no dentro de `public/`. `public/downloads/release.json` contiene URLs y hashes SHA-256. Los instaladores no tienen firma Authenticode; el archivo de licencia sí lleva firma Ed25519, conceptos distintos.
+
+`private/` contiene el CSV original y datos de QA. Está ignorado por git y restringido con ACL local. Nunca subir esta carpeta a GitHub, Pages, un release o un servicio público. Los códigos de prueba son distintos de los 1.000 códigos de clientes.
 
 La privacidad e información comercial de la web describen el estado actual, no sustituyen documentos legales aprobados. Sin testimonios inventados, estadísticas de adopción, precios, plazo de respuesta ni promesas de funciones pendientes.

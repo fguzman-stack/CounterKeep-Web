@@ -19,8 +19,11 @@
   "uploaded_images": 6,
   "feature_stories": 4,
   "faqs": 8,
-  "codes": { "uploaded": false, "required_min": 1000, "required_max": 10000 },
-  "redemption_url": null,
-  "blockers": ["Functional redemption and license validation", "Valid redemption codes CSV", "Verified official Windows installer and distribution", "Founder review of the draft before submission"],
+  "codes": { "uploaded": true, "uploaded_count": 1000, "code_file_id": 71634, "required_min": 1000, "required_max": 10000, "database_available_customer_codes": 1000 },
+  "redemption_url": "https://fguzman-stack.github.io/CounterKeep-Web/activate-ck-8f42b19e/",
+  "backend": { "project_ref": "lqoyxisudmmhikrgdofg", "schema": "counterkeep_private", "function": "counterkeep-license", "shared_project_explicitly_approved": true, "plaintext_codes_stored": false, "signature": "Ed25519", "device_bound": true },
+  "desktop_release": { "version": "0.2.0", "source_commit": "ea15eae", "url": "https://github.com/fguzman-stack/CounterKeep-Web/releases/tag/desktop-v0.2.0", "formats": ["nsis-exe", "msi"], "installed_and_smoke_tested_here": true, "authenticode_signed": false },
+  "blockers": ["Founder review and approval before review submission", "Final legal license/device transfer terms"],
+  "limitations": ["No clean-machine Windows 10/11 matrix test", "No Authenticode publisher certificate", "Revocation reaches offline users only after a connected check", "Codes refunds require administrative revocation, not an automatic licensing webhook", "Complete .ckbackup restore remains unimplemented"],
   "preview_notes": "Image gallery, feature stories and founder content rendered. Pricing and FAQ template components returned empty placeholders despite fields persisting in the draft; review the signed-in editor and preview before submission."
 }

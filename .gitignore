@@ -3,3 +3,6 @@ dist/
 .astro/
 .env
 test-results/
+private/
+*.cklicense
+*.private.json

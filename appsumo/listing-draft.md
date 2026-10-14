@@ -45,7 +45,7 @@ Screenshot to pair: public/images/feature-3-reports-en.png
 Screenshot to pair: public/images/feature-4-work-orders-en.png
 
 ## Pricing
-Pricing model: Codes, one plan without stacking; real redemption is still pending
+Pricing model: Codes, one plan without stacking; functional device-bound redemption in Supabase
 Tier 1 name: 1 code
 Price: US$49, one-time, approved by the founder
 Original price: Omitted, no real regular price has been supplied
@@ -60,11 +60,11 @@ Feature matrix:
 - Windows devices: 1
 - Updates to included features: Included
 Tooltips: Payment recording does not include card processing
-Redemption: PENDING implementation and end-to-end verification
+Redemption: Verified HTTPS redemption, signed-file download/import, native device validation and connected revocation; no production customer codes consumed by QA
 Support email: familiazv2016@gmail.com, confirmed by the founder
-Redemption instructions: PENDING verified download, code/license activation and support steps
-Codes: PENDING public HTTPS redemption URL and a CSV of 1,000 to 10,000 codes accepted by the actual system, limits read from this draft; never generate a list of nonfunctional random keys just to satisfy the upload step
-Licensing: If selected instead of Codes, PENDING server-side webhook and OAuth redirect integration and successful AppSumo licensing tests
+Redemption instructions: 1. Copy your AppSumo code. 2. Download and install CounterKeep for Windows. 3. Open CounterKeep and copy the device identifier on the activation screen. 4. Open the redemption page and enter your purchase email, code and that device identifier. 5. Download the signed .cklicense file and import it on the same computer. You can alternatively activate directly inside the app using your code and purchase email
+Codes: https://fguzman-stack.github.io/CounterKeep-Web/activate-ck-8f42b19e/, private/counterkeep-appsumo-codes.csv, 1,000 actual valid codes with a header, uploaded and accepted by AppSumo
+Licensing: Not used; this is a Codes deal, not an OAuth/webhook Licensing deal
 
 ## Product story
 Headline: Why I built CounterKeep
@@ -82,7 +82,7 @@ Funding: Bootstrapped
 
 ## FAQ
 Q: Does CounterKeep need the internet for daily use?
-A: Core sales, inventory and reports use a local desktop database, so an internet connection is not required for those operations
+A: Initial redemption needs internet; after activation, core sales, inventory and reports use a local database and the signed license can be verified offline
 Q: Which operating systems are supported?
 A: The current desktop build targets Windows 10 and 11, 64-bit, with Microsoft WebView2
 Q: Where are business records stored?

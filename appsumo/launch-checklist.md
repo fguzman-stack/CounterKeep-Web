@@ -40,18 +40,20 @@ El brief pide una URL del producto, hero y galería fieles, stories emparejadas 
 
 ## Entrega del software, bloqueante antes de vender
 
-- [ ] Compilar y probar un instalador final en una instalación limpia de Windows 10/11
-- [ ] Definir distribución HTTPS, versión, firma del instalador y controles de integridad
-- [ ] Implementar y verificar el canje real con códigos o la integración Licensing
-- [ ] Verificar revocación/reembolso y su relación con una aplicación que funciona offline
-- [ ] Si Codes: límites de este borrador 1.000–10.000 códigos; volver a verificar los del ticket antes de subir CSV, y cada código debe funcionar en el sistema real
+- [x] Compilar instaladores EXE y MSI 0.2.0 e instalar/probar el EXE en este equipo Windows
+- [ ] Realizar una matriz adicional en máquinas limpias Windows 10 y 11
+- [x] Definir distribución HTTPS, versión y controles SHA-256 de integridad
+- [ ] Conseguir certificado Authenticode de editor verificado; no se ha supuesto ni falsificado una firma
+- [x] Implementar y verificar canje real, archivo Ed25519 y licencia ligada al equipo
+- [x] Probar revocación conectada y bloqueo local; documentar que no puede ser inmediata si el equipo está offline
+- [x] Verificar ticket (1.000–10.000, cabecera cuenta para el máximo), crear 1.000 códigos de 51 caracteres, importar sus hashes en Supabase y subir CSV real a AppSumo (archivo 71634, HTTP 201)
 - [ ] Si Licensing: endpoints HTTPS, secreto solo en servidor, flujo OAuth y pruebas test_licensing
 - [ ] Probar que registros y ajustes sobreviven al reinicio de la app instalada
 - [ ] Asegurar una estrategia de respaldo y recuperación; actualmente hay exportación, pero la restauración completa consta como pendiente
 - [ ] Revisar restricciones/roles antes de prometer administración de permisos
 - [ ] Aprobar documentos legales finales; las páginas informativas actuales no son un contrato comercial
 
-Las capturas prueban el aspecto de la interfaz, no el funcionamiento de persistencia nativa, del instalador ni de licencias. Esas comprobaciones no se han sustituido por una captura bonita.
+Las capturas prueban el aspecto de la interfaz, no la persistencia nativa. Se añadieron pruebas reales del canje y de la app de producción: firma, equipo incorrecto, ACL SQL, activación HTTPS, comprobación local y revocación. Pasaron 24 E2E, 11 tests frontend/exportación y 6 tests Rust. Los 1.000 códigos de clientes siguen disponibles en Supabase; los códigos QA son separados y no forman parte del CSV vendido.
 
 ## Secuencia MCP cuando exista URL pública
 

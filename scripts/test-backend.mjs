@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict';
+import { readFile, writeFile } from 'node:fs/promises';
+import { createPublicKey, verify } from 'node:crypto';
+const context=JSON.parse(await readFile('private/test-context.json','utf8'));
+const endpoint=context.endpoint;
+const key=createPublicKey({key:{kty:'OKP',crv:'Ed25519',x:context.publicKey},format:'jwk'});
+const device='1'.repeat(64), email='qa-counterkeep@example.com';
+async function request(body, headers={}) {
+  const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json',...headers},body:JSON.stringify(body),signal:AbortSignal.timeout(20000)});
+  return {status:response.status,data:await response.json()};
+}
+const invalid=await request({mode:'redeem',code:'CK-NOT-A-VALID-PURCHASE-CODE',email,deviceId:device});
+assert.equal(invalid.status,409);
+const args={mode:'redeem',code:context.codes.backend,email,deviceId:device};
+const redeemed=await request(args); assert.equal(redeemed.status,200,'Valid QA redemption');
+const license=redeemed.data.license;
+assert.ok(verify(null,Buffer.from('CounterKeep/license/v1\n'+license.payload),key,Buffer.from(license.signature,'base64url')),'Signature must verify with pinned public key');
+const claims=JSON.parse(Buffer.from(license.payload,'base64url').toString('utf8'));
+assert.equal(claims.deviceId,device);assert.equal(claims.email,email);assert.equal(claims.devices,1);
+const repeated=await request(args); assert.equal(repeated.status,200);assert.deepEqual(repeated.data.license,license,'Same-email/device retry must be idempotent');
+assert.equal((await request({...args,email:'other@example.com'})).status,409);
+assert.equal((await request({...args,deviceId:'2'.repeat(64)})).status,409);
+const checked=await request({mode:'check',deviceId:device,license});assert.equal(checked.status,200);assert.equal(checked.data.state,'active');
+assert.equal((await request({mode:'check',deviceId:device,license:{...license,signature:'A'.repeat(86)}})).status,400);
+const races=await Promise.all(['3','4'].map(x=>request({mode:'redeem',code:context.codes.race,email,deviceId:x.repeat(64)})));
+assert.deepEqual(races.map(x=>x.status).sort(),[200,409],'Exactly one device may win concurrent redemption');
+assert.equal((await request(args,{Origin:'https://untrusted.example'})).status,403);
+const oversized=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({padding:'x'.repeat(10000)})});assert.equal(oversized.status,400);
+await writeFile('private/backend-test.cklicense',JSON.stringify(license),{mode:0o600});
+await writeFile('private/backend-test-result.json',JSON.stringify({passed:true,licenseId:claims.licenseId,deviceId:device,publicKey:context.publicKey,cases:['valid redemption','Ed25519 signature','same-device recovery','wrong email rejected','second device rejected','online status','tampering rejected','concurrent single redemption','origin restriction','body size limit']},null,2),{mode:0o600});
+console.log('PASS: live backend redemption, signature, recovery, second-device rejection, concurrent redemption, status, tampering, CORS and size limits. Customer batch untouched.');

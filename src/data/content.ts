@@ -33,7 +33,7 @@ export const content = {
     requirements: 'Built for Windows 10 / 11, 64-bit. Microsoft WebView2 is required by the desktop app.',
     faqEyebrow: 'BEFORE YOU GET STARTED', faqTitle: 'A few things worth knowing.',
     faqs: [
-      ['Does CounterKeep work without internet?', 'Yes. Core sales, inventory and reporting use the desktop app’s local database.'],
+      ['Does CounterKeep work without internet?', 'Yes, after initial license activation. Core sales, inventory and reporting use the local database, and startup license checks do not block valid licenses when offline.'],
       ['Is this a web app or a desktop app?', 'CounterKeep is a Windows desktop application. This website presents the product; it does not store your shop’s records.'],
       ['Do card payments connect to a payment processor?', 'No. CounterKeep records a payment method; it does not process card transactions or connect to payment terminals.'],
       ['Can I export my data?', 'Product and contact lists support CSV and XLSX exports, and documents and reports support PDF. Settings can export a local .ckbackup file; a complete restore workflow is not yet available.'],
@@ -79,7 +79,7 @@ export const content = {
     requirements: 'Para Windows 10 / 11 de 64 bits. La aplicación de escritorio requiere Microsoft WebView2.',
     faqEyebrow: 'ANTES DE EMPEZAR', faqTitle: 'Lo que conviene saber.',
     faqs: [
-      ['¿Funciona sin internet?', 'Sí. Las ventas, el inventario y los reportes principales usan la base local de la aplicación de escritorio.'],
+      ['¿Funciona sin internet?', 'Sí, después de activar la licencia inicialmente. Las ventas, el inventario y los reportes usan la base local, y la comprobación de licencia al iniciar no bloquea una licencia válida si estás sin conexión.'],
       ['¿Es una web o una aplicación de escritorio?', 'CounterKeep es una aplicación para Windows. Esta web presenta el producto; no almacena los registros de tu negocio.'],
       ['¿Procesa pagos con tarjeta?', 'No. CounterKeep registra el medio de pago; no procesa transacciones con tarjeta ni se conecta a terminales bancarios.'],
       ['¿Puedo exportar mis datos?', 'Las listas de productos y contactos permiten exportar CSV y XLSX, y los documentos y reportes permiten PDF. Configuración puede exportar un archivo .ckbackup local; la restauración completa todavía no está disponible.'],

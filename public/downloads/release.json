@@ -1,0 +1,12 @@
+{
+  "product": "CounterKeep",
+  "version": "0.2.0",
+  "source_commit": "ea15eae",
+  "platform": "Windows 10/11 x64",
+  "authenticode_signed": false,
+  "release_url": "https://github.com/fguzman-stack/CounterKeep-Web/releases/tag/desktop-v0.2.0",
+  "installers": [
+    { "format": "exe", "name": "CounterKeep_0.2.0_x64-setup.exe", "url": "https://github.com/fguzman-stack/CounterKeep-Web/releases/download/desktop-v0.2.0/CounterKeep_0.2.0_x64-setup.exe", "sha256": "c797f0baa00d0c2e132ef8312350f9bd5a742977c3a713536d967ab14a0e87ed" },
+    { "format": "msi", "name": "CounterKeep_0.2.0_x64_en-US.msi", "url": "https://github.com/fguzman-stack/CounterKeep-Web/releases/download/desktop-v0.2.0/CounterKeep_0.2.0_x64_en-US.msi", "sha256": "c9c2c4b5d9a18d0352af4af0214863f27735df83e95fa0fd5314adcaad4e1a0d" }
+  ]
+}

@@ -1,0 +1,86 @@
+---
+import '../styles/global.css';
+const { language = 'en' } = Astro.props;
+const es = language === 'es';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const slug = 'activate-ck-8f42b19e/';
+const installer = 'https://github.com/fguzman-stack/CounterKeep-Web/releases/download/desktop-v0.2.0/CounterKeep_0.2.0_x64-setup.exe';
+const words = es ? {
+  title:'Canjea tu código de CounterKeep', intro:'Una licencia de por vida para un equipo Windows. El código es tu credencial de compra: no lo compartas.',
+  step1:'1. Instala CounterKeep', install:'Descargar instalador para Windows', installHelp:'Windows 10 / 11 de 64 bits. El instalador no tiene firma Authenticode; Windows puede mostrar una advertencia de editor no verificado.',
+  step2:'2. Copia el identificador del equipo', deviceHelp:'Abre CounterKeep y copia el identificador que aparece en la pantalla de activación. También puedes activar directamente desde la app con tu código y correo.',
+  step3:'3. Canjea y descarga tu licencia', email:'Correo de la compra', code:'Código de AppSumo', device:'Identificador del equipo (64 caracteres)', consent:'Confirmo que este es el equipo que quiero activar. El código quedará ligado a este identificador y a este correo.',
+  submit:'Canjear código', busy:'Validando…', success:'Licencia creada. Descarga el archivo y usa «Importar archivo .cklicense» en CounterKeep, en este mismo equipo.',
+  download:'Descargar archivo .cklicense', privacy:'El servicio de activación recibe tu correo e identificador derivado del equipo. Los registros de tu negocio no se envían.',
+  transfer:'Para cambiar de equipo o corregir el correo, contacta a soporte. No canjees el código con un identificador inventado.',
+  errorInvalid:'El código no es válido, no está disponible o ya está vinculado a otro correo o equipo.', errorRequest:'Revisa el correo, el código y el identificador completo del equipo.', errorRate:'Demasiados intentos. Espera un minuto e inténtalo otra vez.', errorNetwork:'No se pudo completar el canje. Comprueba tu conexión e inténtalo nuevamente con los mismos datos.', errorSignature:'No se pudo verificar la licencia. Usa un navegador actualizado o activa directamente desde la app.',
+} : {
+  title:'Redeem your CounterKeep code', intro:'A lifetime license for one Windows device. Your code is your purchase credential: do not share it.',
+  step1:'1. Install CounterKeep', install:'Download the Windows installer', installHelp:'Windows 10 / 11, 64-bit. The installer does not have an Authenticode signature; Windows may show an unverified publisher warning.',
+  step2:'2. Copy your device identifier', deviceHelp:'Open CounterKeep and copy the identifier on its activation screen. You can also activate directly inside the app with your code and email.',
+  step3:'3. Redeem and download your license', email:'Purchase email', code:'AppSumo code', device:'Device identifier (64 characters)', consent:'I confirm this is the device I want to activate. The code will be bound to this identifier and this email.',
+  submit:'Redeem code', busy:'Validating…', success:'License created. Download the file and use “Import a .cklicense file” inside CounterKeep on this same device.',
+  download:'Download .cklicense file', privacy:'The activation service receives your email and a derived device identifier. Your business records are not sent.',
+  transfer:'For a device transfer or email correction, contact support. Do not redeem a code using an invented device identifier.',
+  errorInvalid:'The code is invalid, unavailable or already bound to another email or device.', errorRequest:'Check the email, code and complete device identifier.', errorRate:'Too many attempts. Wait a minute and try again.', errorNetwork:'Redemption could not be completed. Check your connection and retry with the same details.', errorSignature:'The license could not be verified. Use an updated browser or activate directly inside the app.',
+};
+---
+<!doctype html>
+<html lang={language}><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="robots" content="noindex, nofollow, nosnippet" /><meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#f8f7f3" /><title>{words.title} | CounterKeep</title><link rel="icon" href={`${base}/images/logo.jpg`} /></head>
+<body><main class="container document redemption"><header class="redemption-header"><a class="brand" href={`${base}/${es?'es/':''}`}><img src={`${base}/images/logo.jpg`} width="38" height="38" alt="" /><span>CounterKeep<span class="brand-dot">.</span></span></a><a class="language-switch" href={`${base}/${es?'':'es/'}${slug}`} lang={es?'en':'es'}>{es?'English':'Español'}</a></header><p class="eyebrow">APPSUMO · COUNTERKEEP</p><h1>{words.title}</h1><p>{words.intro}</p>
+  <section><h2>{words.step1}</h2><a class="button button-dark" href={installer}>{words.install} ↗</a><p class="redemption-note">{words.installHelp}</p><p class="redemption-note"><a href="https://github.com/fguzman-stack/CounterKeep-Web/releases/tag/desktop-v0.2.0">{es?'Versión, instalador MSI y checksums SHA-256':'Release, MSI installer and SHA-256 checksums'}</a></p></section>
+  <section><h2>{words.step2}</h2><p>{words.deviceHelp}</p></section>
+  <section><h2>{words.step3}</h2><form id="redeem-form" class="redeem-form" data-words={JSON.stringify(words)}>
+    <label for="redeem-email">{words.email}<input id="redeem-email" name="email" type="email" required maxLength="254" autoComplete="email" /></label>
+    <label for="redeem-code">{words.code}<input id="redeem-code" name="code" type="password" required minLength="3" maxLength="200" pattern="[A-Za-z0-9_\-]+" autoComplete="off" spellcheck="false" /></label>
+    <label for="redeem-device">{words.device}<input id="redeem-device" name="device" type="text" required minLength="64" maxLength="64" pattern="[a-fA-F0-9]{64}" autoComplete="off" spellcheck="false" class="device-field" /></label>
+    <label class="consent-label"><input name="consent" type="checkbox" required />{words.consent}</label>
+    <button type="submit" class="button button-orange">{words.submit} →</button>
+    <p id="redeem-status" role="status" aria-live="polite"></p>
+    <button type="button" id="download-license" class="button button-dark" hidden>{words.download} ↓</button>
+  </form></section>
+  <p class="notice">{words.transfer} <a href="mailto:familiazv2016@gmail.com">familiazv2016@gmail.com</a></p><p class="redemption-note">{words.privacy} <a href={`${base}/${es?'es/':''}privacy/`}>{es?'Privacidad':'Privacy'}</a></p>
+</main></body></html>
+<script>
+  const ENDPOINT='https://lqoyxisudmmhikrgdofg.supabase.co/functions/v1/counterkeep-license';
+  const PUBLIC_KEY='F4Otp6KyYid54rfQ8BHHFrf1Pm9dvJCdFy8_L6m4J3Q';
+  const form=document.querySelector<HTMLFormElement>('#redeem-form')!;
+  const words=JSON.parse(form.dataset.words!);
+  const status=document.querySelector<HTMLParagraphElement>('#redeem-status')!;
+  const submit=form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+  const download=document.querySelector<HTMLButtonElement>('#download-license')!;
+  let license: {algorithm:string;payload:string;signature:string}|null=null;
+  function decode(value:string){return Uint8Array.from(atob(value.replace(/-/g,'+').replace(/_/g,'/')+'='.repeat((4-value.length%4)%4)),c=>c.charCodeAt(0));}
+  form.addEventListener('input',()=>{license=null;download.hidden=true;status.textContent='';});
+  form.addEventListener('submit',async event=>{
+    event.preventDefault();if(!form.reportValidity())return;
+    submit.disabled=true;submit.textContent=words.busy;download.hidden=true;license=null;
+    const data=new FormData(form);
+    const email=String(data.get('email')).trim().toLowerCase();const deviceId=String(data.get('device')).trim().toLowerCase();
+    try{
+      const response=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mode:'redeem',email,code:String(data.get('code')).trim(),deviceId}),signal:AbortSignal.timeout(20000),referrerPolicy:'no-referrer'});
+      if(!response.ok){status.textContent=response.status===409?words.errorInvalid:response.status===400?words.errorRequest:response.status===429?words.errorRate:words.errorNetwork;return;}
+      const token=(await response.json()).license;
+      try{
+        if(!token || token.algorithm!=='Ed25519' || typeof token.payload!=='string' || token.payload.length>2048 || typeof token.signature!=='string' || token.signature.length!==86)throw Error('Invalid');
+        const key=await crypto.subtle.importKey('raw',decode(PUBLIC_KEY),{name:'Ed25519'},false,['verify']);
+        if(!await crypto.subtle.verify('Ed25519',key,decode(token.signature),new TextEncoder().encode('CounterKeep/license/v1\n'+token.payload)))throw Error('Invalid');
+        const claims=JSON.parse(new TextDecoder().decode(decode(token.payload)));
+        if(claims.product!=='CounterKeep'||claims.deviceId!==deviceId||claims.email!==email||claims.plan!=='lifetime-1'||claims.devices!==1||claims.kid!=='ck-ed25519-2026-01')throw Error('Invalid');
+      }catch{status.textContent=words.errorSignature;return;}
+      license={algorithm:token.algorithm,payload:token.payload,signature:token.signature};
+      (document.querySelector('#redeem-code') as HTMLInputElement).value='';
+      download.hidden=false;status.textContent=words.success;
+    }catch{status.textContent=words.errorNetwork;}
+    finally{submit.disabled=false;submit.textContent=words.submit+' →';}
+  });
+  download.addEventListener('click',()=>{
+    if(!license)return;
+    const url=URL.createObjectURL(new Blob([JSON.stringify(license,null,2)],{type:'application/json'}));
+    const a=document.createElement('a');a.href=url;a.download='counterkeep-lifetime.cklicense';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  });
+</script>
+<style>
+  .redemption{max-width:720px}.redemption-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:44px}.redemption h1{font-size:41px}.redemption-note{font-size:12px!important;margin-top:13px}.redemption .button{text-decoration:none!important}.redeem-form{display:grid;gap:20px;border:1px solid var(--line);border-radius:10px;background:#fffdf9;padding:25px;margin-top:24px}.redeem-form label{font-size:13px;font-weight:600;line-height:1.6}.redeem-form input:not([type=checkbox]){display:block;width:100%;padding:13px 14px;border:1px solid #d4d9d1;border-radius:5px;background:white;margin-top:7px;font:inherit}.redeem-form .device-field{font-family:monospace!important;font-size:11px!important}.consent-label{display:flex;align-items:flex-start;gap:11px;font-weight:400!important;font-size:12px!important}.consent-label input{margin-top:4px;flex-shrink:0}.redeem-form button{border:0}.redeem-form button:disabled{opacity:.55;cursor:wait}.redeem-form #redeem-status{font-size:13px;color:#475b49}.redeem-form #redeem-status:empty{display:none}
+  @media(max-width:700px){.redemption h1{font-size:33px}.redeem-form{padding:20px}.redemption-header{margin-bottom:35px}}
+</style>
